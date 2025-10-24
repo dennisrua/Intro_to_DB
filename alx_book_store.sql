@@ -8,7 +8,15 @@ USE alx_book_store;
 CREATE TABLE AUTHORS (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL
-);
+) ENGINE=InnoDB;
+
+-- Create Customers table
+CREATE TABLE CUSTOMERS (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215),
+    address TEXT
+) ENGINE=InnoDB;
 
 -- Create Books table
 CREATE TABLE BOOKS (
@@ -18,15 +26,7 @@ CREATE TABLE BOOKS (
     price DOUBLE,
     publication_date DATE,
     FOREIGN KEY (author_id) REFERENCES AUTHORS(author_id)
-);
-
--- Create Customers table
-CREATE TABLE CUSTOMERS (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215),
-    address TEXT
-);
+) ENGINE=InnoDB;
 
 -- Create Orders table
 CREATE TABLE ORDERS (
@@ -34,7 +34,7 @@ CREATE TABLE ORDERS (
     customer_id INT,
     order_date DATE,
     FOREIGN KEY (customer_id) REFERENCES CUSTOMERS(customer_id)
-);
+) ENGINE=InnoDB;
 
 -- Create Order_Details table
 CREATE TABLE ORDER_DETAILS (
@@ -44,4 +44,4 @@ CREATE TABLE ORDER_DETAILS (
     quantity DOUBLE,
     FOREIGN KEY (order_id) REFERENCES ORDERS(order_id),
     FOREIGN KEY (book_id) REFERENCES BOOKS(book_id)
-);
+) ENGINE=InnoDB;
